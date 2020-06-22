@@ -1,13 +1,13 @@
 import React from 'react';
 import {View, Text, TouchableHighlight, StyleSheet} from 'react-native';
 
-const Button: React.FC<{submitTodo: () => void}> = (submitTodo) => {
+const Button: React.FC<{submitTodo: () => void}> = ({submitTodo}) => {
   return (
     <View style={styles.buttonContainer}>
       <TouchableHighlight
         underlayColor="#efefef"
         style={styles.button}
-        onPress={() => submitTodo.submitTodo()}>
+        onPress={() => submitTodo()}>
         <Text style={styles.submit}>Submit</Text>
       </TouchableHighlight>
     </View>
