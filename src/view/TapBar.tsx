@@ -4,37 +4,28 @@ import TapBarItemComponent from './TapBarItemComponent';
 import {TodoTypes} from '../models/TodoTypes';
 
 interface Props {
-  type: TodoTypes;
+  currentlySelectedType: TodoTypes;
   setType: (type: TodoTypes) => void;
 }
 
-const TapBar: React.FC<Props> = ({type, setType}) => (
+const TapBar = (props: Props) => (
   <View style={styles.container}>
     <TapBarItemComponent
-      type={type}
-      title="All"
-      setType={() => {
-        console.log('TapBarItemComponent type: ' + 'All');
-        setType('All');
-      }}
+      currentSelectedType={props.currentlySelectedType}
+      type="All"
+      setType={props.setType}
     />
     <TapBarItemComponent
-      type={type}
+      currentSelectedType={props.currentlySelectedType}
       border
-      title="Active"
-      setType={() => {
-        console.log('TapBarItemComponent type: ' + 'Active');
-        setType('Active');
-      }}
+      type="Active"
+      setType={props.setType}
     />
     <TapBarItemComponent
-      type={type}
+      currentSelectedType={props.currentlySelectedType}
       border
-      title="Complete"
-      setType={() => {
-        console.log('TapBarItemComponent type: ' + 'Complete');
-        setType('Complete');
-      }}
+      type="Complete"
+      setType={props.setType}
     />
   </View>
 );

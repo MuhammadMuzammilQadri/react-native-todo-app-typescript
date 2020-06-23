@@ -3,16 +3,16 @@ import {Text, TouchableHighlight, StyleSheet} from 'react-native';
 import {TodoTypes} from '../models/TodoTypes';
 
 interface Props {
+  currentSelectedType: TodoTypes;
   type: TodoTypes;
-  title: TodoTypes;
-  setType: () => void;
+  setType: (type: TodoTypes) => void;
   selected?: boolean;
   border?: boolean;
 }
 
 const TapBarItemComponent: React.FC<Props> = ({
+  currentSelectedType,
   type,
-  title,
   setType,
   selected,
   border,
@@ -23,11 +23,15 @@ const TapBarItemComponent: React.FC<Props> = ({
       styles.item,
       selected ? styles.selected : null,
       border ? styles.border : null,
-      type === title ? styles.selected : null,
+      currentSelectedType === type ? styles.selected : null,
     ]}
-    onPress={setType}>
-    <Text style={[styles.itemText, type === title ? styles.bold : null]}>
-      {title}
+    onPress={() => setType(type)}>
+    <Text
+      style={[
+        styles.itemText,
+        currentSelectedType === type ? styles.bold : null,
+      ]}>
+      {type}
     </Text>
   </TouchableHighlight>
 );

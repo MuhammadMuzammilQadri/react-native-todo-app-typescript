@@ -82,14 +82,14 @@ export class App extends React.Component<Props, State> {
             inputChange={(text) => this.inputChange(text)}
           />
           <TodoList
-            toggleComplete={(todoIndex) => this.toggleComplete(todoIndex)}
-            deleteTodo={(todoIndex) => this.deleteTodo(todoIndex)}
+            toggleComplete={(_todoIndex) => this.toggleComplete(_todoIndex)}
+            deleteTodo={(_todoIndex) => this.deleteTodo(_todoIndex)}
             todos={todos}
             type={type}
           />
           <Button submitTodo={() => this.submitTodo()} />
         </ScrollView>
-        <TapBar type={type} setType={(type) => this.setType(type)} />
+        <TapBar currentlySelectedType={type} setType={(_type) => this.setType(_type)} />
       </View>
     );
   }
